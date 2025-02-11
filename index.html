@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color:rgba(11, 226, 237, 0.858);
+        }
+        .certificate-box {
+            background-image: url("RESO/istockphoto-1152126136-612x612.jpg");
+        
+            background-size: cover;
+            
+            width: 70%;
+            height: 80vh;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+        .certificate-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .certificate-content {
+            font-size: 20px;
+            margin: 20px;
+        }
+        .sign {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 200px;
+        }
+        
+        .print-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .print-btn:hover {
+            background-color: #0056b3;
+        }
+        
+
+           
+        
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
+            }
+            .certificate-box {
+                background-image: url("RESO/istockphoto-1152126136-612x612.jpg") !important; 
+                background-size: cover !important;
+                background-repeat: no-repeat !important;
+            }
+            .print-btn {
+                display: none;
+            }
+        }
+        
+        
+    </style>
+</head>
+<body>
+
+    <div class="certificate-box">
+        <img src="RESO/WhatsApp-Image-2023-06-19-at-17.56.44.jpeg" alt="Certificate Logo" width="200px">
+        <div style="display:inline-block; width:20px; height:70px; vertical-align:middle;"></div>
+        <img src="RESO/images.jpeg" alt="Another Logo" width="70px" height="70px">
+        
+        <br>
+
+        <div class="certificate-title">
+            <h1>Certificate <br> of Achievement</h1>
+        </div>
+
+        <div class="certificate-content">
+            This Certificate is presented to <br>
+            <strong id="name"></strong><br>
+            for successfully completing the course <br>
+            <strong id="course-name"></strong><br>
+            organised by <strong>Computer Society of India Student's Chapter DYPSEM</strong><br>
+            on <strong id="date"></strong>.
+        </div>
+        <br>
+
+        <div class="sign">
+            <img src="RESO/WhatsApp_Image_2025-01-29_at_7.45.42_PM-removebg-preview.png" alt="Signature" width="100px">
+            <hr style="margin-top: 10px; border: 1px solid #000; width: 100px;">
+            <p><strong>Shreyash U. Mane <br> CSI Vice-President <br> DYPSEM </strong></p>
+        </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">Download Certificate</button>
+
+    <script>
+        window.onload = function() {
+            let name = prompt("Enter your name:");
+            while (!name || name.trim() === "") {
+                name = prompt("Name cannot be empty! Please enter your name:");
+            }
+
+            let courseName = prompt("Enter the course name:");
+            while (!courseName || courseName.trim() === "") {
+                courseName = prompt("Course name cannot be empty! Please enter the course name:");
+            }
+
+            let date = prompt("Enter the date (DD/MM/YYYY):");
+            while (!date || !/^\d{2}\/\d{2}\/\d{4}$/.test(date)) {
+                date = prompt("Invalid date format! Please enter the date in DD/MM/YYYY format:");
+            }
+
+            document.getElementById("name").innerText = name;
+            document.getElementById("course-name").innerText = courseName;
+            document.getElementById("date").innerText = date;
+        };
+    </script>
+
+</body>
+</html>
